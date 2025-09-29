@@ -1,0 +1,196 @@
+---
+title: "RWorksheet_Arcena#1"
+output: pdf_document
+date: "2025-09-29"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# 1. Set up a vector named age, consisting of 34, 28, 22, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 19, 20, 57, 49, 50, 37, 46, 25, 17, 37, 42, 53, 41, 51, 35, 24, 33, 41
+age <- c(34, 28, 22, 36, 27, 18, 52, 39,
+         42, 29, 35, 31, 27, 22, 37, 34,
+         19, 20, 57, 49, 50, 37, 46, 25,
+         17, 37, 42, 53, 41, 51, 35, 24,
+         33, 41)
+
+#a. How many data points?
+length(age)
+
+#b. Write the R code and its output
+age
+
+# 2. Find the reciprocal of the values for age. 
+1 / age
+
+# 3. Assign also new_age <- c(age, 0, age).
+new_age <- c(age, 0, age)
+new_age
+
+#what happened to the new_age?
+#The total length of new_age is 69 elements
+
+# 4. Sort the values for age
+sort(age)
+
+# 5. Find the Minimum and Maximum value for age
+min(age)
+max(age)
+
+# 6. Set up a vector named data, consisting of 2.4, 2.8, 2.1, 2.5, 2.4, 2.2, 2.5, 2.3, 2.5, 2.3, 2.4, and 2.7.
+data <- c(2.4, 2.8, 2.1, 2.5, 2.4, 2.2, 2.5,
+          2.3, 2.5, 2.3, 2.4, 2.7)
+
+# a. How many data points?
+length(data)
+# b. Write the R code and its output
+data
+
+# 7. Generates a new vector for data where you double every value of the data.
+data * 2
+
+#what happen to the data?
+#Each value in data was multiplied by 2
+
+# 8. Generate the sequence for the following scenario 
+
+# *8.1 Integers from 1 to 100
+seq1<-seq(1,100)
+seq1
+
+# *8.2 Numbers from 20 to 60
+seq2<-seq(20,60)
+seq2
+
+# *8.3 Mean of Numbers from 20 to 60
+mean1<-mean(20:60)
+mean1
+
+# *8.4 Sum of numbers from 51 to 91
+sum1<-sum(51:91)
+sum1
+
+# *8.5 integers from 1 to 1000
+seq3 <- 1:1000
+seq3
+
+# a. How many data points from 8.1 to 8.4?
+# Total = 143 data points
+# b. Write the R code and its output from 8.1 to 8.4.
+total_data_points <- length(seq1) + length(seq2) + length(mean1) + length(sum1)
+total_data_points
+# c. For 8.5 find only maximum data points until 10.
+head(seq3, 10)
+# First 10 elements: 1 2 3 4 5 6 7 8 9 10
+# 9. Print a vector with the integers between 1 and 100 that are not divisible by 3, 5 and 7 using filter option.
+
+Filter(function(i) { all(i %% c(3,5,7) != 0) }, seq(100))
+
+
+# 10. Generate a sequence backwards of the integers from 1 to 100.
+seq(100, 1, by = -1)
+
+
+# 11. List all the natural numbers below 25 that are multiples of 3 or 5.
+nums <- seq(1,24)
+multiply <- nums[nums %% 3 == 0 | nums %% 5 == 0]
+multiply
+sum(multiply)
+
+# a. How many data points from 10 to 11? b. Write the R code and its output from 10 and 11
+length(seq(100, 1, by = -1)) + length(multiply)  # Output: 100 + 11 = 111
+
+# 12. Statements can be grouped together using braces ‘{’ and ‘}’. A group of statements is sometimes called a block. Single statements are evaluated when a new line is typed at the end of the syntactically complete statement. Blocks are not evaluated until a new line is entered after the closing brace
+{x <- 0
+  x + 5}
+#The output shows the unexpected token
+
+x <- {0
+  + x + 5}
+x
+
+# 13. Set up a vector score
+score <- c(72, 86, 92, 63, 88, 89, 91, 92, 75, 75, 77)
+
+# Find x[2] and x[3]
+score[2]
+score[3]
+
+# 14. Create a vector a = c(1,2,NA,4,NA,6,7).
+a <- c(1, 2, NA, 4, NA, 6, 7)
+print(a, na.print = "-999")
+
+# 15. Create a vector x = (2,3,4). Check for the class(x).
+x <- c(2, 3, 4)
+class(x)
+class(x) <- "foo"
+class(x)
+
+name = readline(prompt = "Input your name: ")
+age = readline(prompt = "Input your age: ")
+print(paste("My name is", name, "and I am", age, "years old."))
+print(R.version.string)
+```
+
+```{r}
+# 9. Print a vector with integers between 1 and 100 not divisible by 3, 5 and 7
+Filter(function(i) { all(i %% c(3,5,7) != 0) }, seq(100))
+```
+
+```{r}
+# 10. Generate a sequence backwards of the integers from 1 to 100
+seq(100, 1, by = -1)
+```
+
+```{r}
+# 11. List all natural numbers below 25 that are multiples of 3 or 5
+nums <- seq(1,24)
+multiply <- nums[nums %% 3 == 0 | nums %% 5 == 0]
+multiply
+sum(multiply)
+# a. How many data points from 10 to 11?
+length(seq(100, 1, by = -1)) + length(multiply)
+
+# b. Write the R code and its output from 10 and 11
+# Output shown above
+```
+
+```{r}
+# 12. Statements can be grouped together using braces
+{x <- 0
+  x + 5}
+
+x <- {0
+  + x + 5}
+x
+```
+
+```{r}
+# 13. Set up a vector score
+score <- c(72, 86, 92, 63, 88, 89, 91, 92, 75, 75, 77)
+
+# Find x[2] and x[3]
+score[2]
+score[3]
+```
+
+```{r}
+# 14. Create a vector a = c(1,2,NA,4,NA,6,7)
+a <- c(1, 2, NA, 4, NA, 6, 7)
+print(a, na.print = "-999")
+```
+
+```{r}
+# 15. Create a vector x = (2,3,4). Check for the class(x)
+x <- c(2, 3, 4)
+class(x)
+class(x) <- "foo"
+class(x)
+
+name = readline(prompt = "Input your name: ")
+age = readline(prompt = "Input your age: ")
+print(paste("My name is", name, "and I am", age, "years old."))
+print(R.version.string)
+```
