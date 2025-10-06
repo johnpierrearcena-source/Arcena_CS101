@@ -1,0 +1,157 @@
+---
+title: "RWorksheet_Arcena#2"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# 1. Create a vector using : operator
+# a. Sequence from -5 to 5. Write the R code and its output. Describe its output.
+x <- -5:5
+x
+#The output shows a sequence of integers from -5 to 5, incrementing by 1 each time.
+
+# b. x <- 1:7
+x <- 1:7
+x
+```
+
+```{r}
+# 2. Create a vector using seq() function
+# a. seq(1, 3, by=0.2) # specify step size
+# Write the R code and its output. Describe the output.
+seq(1, 3, by=0.2)
+# The output shows a sequence starting from 1 to 3, incrementing by 0.2 at each step.
+
+```
+
+```{r}
+# 3. A factory has a census of its workers. There are 50 workers in total. 
+# The following list shows their ages: 34, 28, 22, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 19, 20, 57, 49, 50, 37, 46, 25, 17, 37, 43, 53, 41, 51, 35, 24, 33, 41, 53, 40, 18, 44, 38, 41, 48, 27, 39, 19, 30, 61, 54, 58, 26, 18.
+ages <- c(34, 28, 22, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 
+22, 37, 34, 19, 20, 57, 49, 50, 37, 46, 25, 17, 37, 43, 53, 41,
+51, 35, 24, 33, 41, 53, 40, 18, 44, 38, 41, 48, 27, 39, 19, 30,
+61, 54, 58, 26, 18)
+
+# a. Access 3rd element, what is the value?
+print(ages[3])
+
+# b. Access 2nd and 4th element, what are the values?
+print(ages[c(2, 4)])
+
+# c. Access all but the 1st element is not included. Write the R code and its output.
+print(ages[-1])
+```
+
+
+```{r}
+# 4. *Create a vector x <- c("first"=3, "second"=0, "third"=9). Then named the vector, names(x).
+x <- c("first"=3, "second"=0, "third"=9)
+# a. Print the results. Then access x[c("first", "third")]. Describe the output.
+# b. Write the code and its output.
+x
+x[c("first", "third")]
+```
+
+
+```{r}
+# 5. Create a sequence x from -3:2.
+x <- -3:2
+x
+# a. Modify 2nd element and change it to 0; 
+# x[2] <- 0 
+# x 
+# Describe the output.
+# b. Write the code and its output.
+x[2] <- 0
+x
+#The output shows that [2] was replaced by 0.
+```
+
+```{r}
+# 6. *The following data shows the diesel fuel purchased by Mr. Cruz.
+# a. Create a data frame for month, price per liter (php) and purchase-quantity (liter).
+# Write the codes.
+Month <- c("Jan", "Feb", "March", "Apr", "May", "June")
+Priceperliter <- c(52.50, 57.25, 60.00, 65.00, 74.25, 54.00)
+Liters <- c(25, 30, 40, 50, 10, 45)
+# b. What is the average fuel expenditure of Mr. Cruz from Jan 
+# to June? Note: Use weighted.mean(liter, purchase)
+fuel <- data.frame(Month, Priceperliter, Liters)
+fuel
+
+ave <- weighted.mean(Liters, Priceperliter)
+ave
+#The average fuel is [1] 32.65152
+```
+
+```{r}
+# 7. R has actually lots of built-in datasets. For example, the 
+# rivers data “gives the lengths (in miles) of 141 “major” 
+# rivers in North America, as compiled by the US Geological Survey”.
+rivers
+# a. Type “rivers” in your R console. Create a vector data with
+# 7 elements, containing the number of elements (length) in 
+# rivers, their sum (sum), mean (mean), median (median), 
+# variance (var) standard deviation (sd), minimum (min) and maximum (max).
+# b. What are the results?
+# c. Write the code and its outputs.
+data <- c(
+length(rivers),
+sum(rivers),
+mean(rivers),
+median(rivers),
+var(rivers),
+sd(rivers),
+min(rivers),
+max(rivers)
+)
+data
+```
+
+```{r}
+# 8. The table below gives the 25 most powerful celebrities and 
+# their annual pay as ranked by the editions of Forbes magazine
+# and as listed on the Forbes.com website. 
+# a. Create vectors according to the above table. Write the codes.
+ranking <- 1:25
+
+celebrity <- c(
+"Tom Cruise","Rolling Stones","Oprah Winfrey",
+"U2","Tiger Woods","Steven Spielberg",
+"Howard Stern","50 Cent","Cast of the Sopranos",
+"Dan Brown","Bruce Springsteen",
+"Donald Trump","Muhammad Ali","Paul McCartney",
+"George Lucas","Elton John",
+"David Letterman","Phil Mickelson","J.K. Rowling",
+"Brad Pitt","Peter Jackson",
+"Dr. Phil McGraw","Jay Lenon","Celine Dion","Kobe Bryant"
+)
+
+pay <- c(
+67, 90, 225, 110, 90,332 ,302 ,41 ,52 ,88 ,55 ,44 ,55 ,
+40 ,233 ,34 ,40 ,47 ,75 ,25 ,39 ,45 ,32 ,40 ,31)
+forbes <- data.frame(Ranking=ranking, Celebrity=celebrity, Pay=pay)
+forbes
+
+# b. Modify the power ranking and pay of J.K. Rowling. Change 
+# power ranking to 15 and pay to 90. Write the codes and its output.
+
+forbes$Ranking[forbes$Celebrity == "J.K. Rowling"] <- 15
+forbes$Pay[forbes$Celebrity == "J.K. Rowling"] <- 90
+forbes
+# c. Interpret the data.
+
+# The Forbes celebrity ranking dataset shows the top 25 most 
+# influential figures across entertainment industries. Steven
+#Spielberg leads with $332 million annual earnings, followed by
+#Howard Stern at $302 million and George Lucas at $233 million.
+#After modification, J.K. Rowling's position improved to 15th
+#rank with $90 million earnings, placing her among higher-tier
+#celebrities and reflecting substantial financial influence in
+#the literature and entertainment sector compared to other
+#industry figures.
+```
