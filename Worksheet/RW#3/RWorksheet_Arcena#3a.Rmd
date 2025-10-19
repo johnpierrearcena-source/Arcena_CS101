@@ -1,0 +1,196 @@
+---
+title: "RWorksheet_Arcena#3a"
+author: "John Pierre R. Arceña"
+output:
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1. Using Vectors
+
+# There is a built-in vector LETTERS contains the 
+# uppercase letters of the alphabet and letters which 
+# contains the lowercase letters of the alphabet.
+
+## Based on the above vector LETTERS:
+
+##1a. You need to produce a vector that contains the 
+# first 11 letters.
+```{r}
+LETTERS[1:11]
+```
+
+##1b. Produce a vector that contains the odd numbered 
+# letters.
+```{r}
+LETTERS[seq(1, 26, by = 2)]
+```
+
+##1c. Produce a vector that contains the vowels
+```{r}
+LETTERS[LETTERS %in% c("A", "E", "I", "O", "U")]
+```
+
+##Based on the above vector letters:
+
+##1d. Produce a vector that contains the last 5 
+# lowercase letters.
+```{r}
+tail(letters, 5)
+```
+
+##1e. Produce a vector that contains letters between 
+# 15 to 24 letters in lowercase.
+```{r}
+letters[15:24]
+```
+
+## 2. Temperature Data
+
+# Create a vector (not a dataframe) with the average 
+# temperatures in April for Tuguegarao City, Manila, 
+# Iloilo City, Tacloban, Samal Island, and Davao City.
+
+##2a. What is the R code and its result for creating 
+# a character vector for the city/town? Name the object 
+# as city.
+```{r}
+city <- c("Tuguegarao City", "Manila", "Iloilo City", 
+          "Tacloban", "Samal Island", "Davao City")
+city
+```
+
+##2b. The average temperatures in Celcius are 42, 39, 
+# 34, 34, 30, and 27 degrees. Name the object as temp.
+```{r}
+temp <- c(42, 39, 34, 34, 30, 27)
+temp
+```
+
+##2c. Create a dataframe to combine the city and the 
+# temp by using data.frame().
+```{r}
+city_temp <- data.frame(city, temp)
+city_temp
+```
+
+##2d. Associate the dataframe by naming the columns 
+# using the names() function as City and Temperature.
+```{r}
+names(city_temp) <- c("City", "Temperature")
+city_temp
+```
+
+##2e. Print the structure by using str() function. 
+# Describe the output.
+```{r}
+str(city_temp)
+```
+
+##2f. From the answer in d, what is the content of 
+# row 3 and row 4?
+```{r}
+city_temp[3:4, ]
+```
+
+##2g. Display the city with highest temperature and 
+# the city with the lowest temperature.
+```{r}
+# City with highest temperature
+city_temp[city_temp$Temperature == max(city_temp$Temperature), ]
+
+# City with lowest temperature
+city_temp[city_temp$Temperature == min(city_temp$Temperature), ]
+```
+
+## Using Matrices
+
+##2. Create a matrix of one to eight and eleven to 
+# fourteen with four columns and three rows.
+
+##2a. What will be the R code for the #2 question 
+# and its result?
+```{r}
+m <- matrix(c(1:8, 11:14), nrow = 3, ncol = 4)
+m
+```
+
+##2b. Multiply the matrix by two. What is its R code 
+# and its result?
+```{r}
+m * 2
+```
+
+##2c. What is the content of row 2? What is its R code?
+```{r}
+m[2, ]
+```
+
+##2d. What will be the R code if you want to display 
+# the column 3 and column 4 in row 1 and row 2?
+```{r}
+m[1:2, 3:4]
+```
+
+##2e. What is the R code if you want to display only 
+# the columns in 2 and 3, row 3?
+```{r}
+m[3, 2:3]
+```
+
+##2f. What is the R code if you want to display only 
+# the columns 4?
+```{r}
+m[, 4]
+```
+
+##2g. Name the rows as isa, dalawa, tatlo and columns 
+# as uno, dos, tres, quatro.
+```{r}
+rownames(m) <- c("isa", "dalawa", "tatlo")
+colnames(m) <- c("uno", "dos", "tres", "quatro")
+m
+```
+
+##2h. Reshape the matrix by assigning a new dimension 
+# with dim(). New dimensions should have 2 columns and 
+# 6 rows.
+```{r}
+dim(m) <- c(6, 2)
+m
+```
+
+## Using Arrays
+
+##3. An array contains 1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1
+
+##3a. Create an array for the above numeric values. 
+# Each value will be repeated twice in a three-dimensional 
+# array with 4 columns and 2 rows.
+```{r}
+values <- c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1)
+arr <- array(rep(values, 2), dim = c(2, 4, 3))
+arr
+```
+
+##3b. How many dimensions do your array have?
+```{r}
+dim(arr)
+```
+
+# #3c. Name the rows as lowercase letters and columns 
+# as uppercase letters starting from A. The array names 
+# should be 1st-Dimensional Array, 2nd-Dimensional Array, 
+# and 3rd-Dimensional Array.
+```{r}
+dimnames(arr) <- list(
+  c("a", "b"),
+  c("A", "B", "C", "D"),
+  c("1st-Dimensional Array", "2nd-Dimensional Array", 
+    "3rd-Dimensional Array")
+)
+arr
+```
